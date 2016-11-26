@@ -10,5 +10,5 @@ clean:
 	rm -f $(APP)
 
 $(APP): $(APP).c
-	$(CC) -Wall -I/sw/include -o $@ $(APP).c -L/sw/lib -lusb
+	$(CC) -Wall -I/usr/local/include -o $@ $(APP).c -L/usr/local/lib -lusb
 

@@ -67,6 +67,9 @@ program: firmware.hex
 program-usb: firmware.hex
 	avrdude -P/dev/ttyUSB0 -c stk500hvsp -p attiny85 -U lfuse:w:0xdf:m -U flash:w:firmware.hex -U hfuse:w:0x5f:m
 
+program-avrisp: firmware.hex
+	avrdude -P /dev/cu.usbmodem1411 -c avrisp -b 19200 -p t85 -U lfuse:w:0xdf:m -U flash:w:firmware.hex -U hfuse:w:0x5f:m
+
 disasm:	firmware.bin
 	avr-objdump -d firmware.bin
 

@@ -295,6 +295,25 @@ int main(int argc, char *argv[]) {
   /* since the software generated i2c clock isn't too exact. in fact setting */
   /* it to 10us doesn't do anything at all since this already is the default */
   i2c_tiny_usb_set(CMD_SET_DELAY, 10);
+  
+  printf("Probing connected devices...\n");
+  
+  for(int addr_i = 0x08; addr_i <= 0x77; addr_i++) {
+    
+    usleep(100000); // 100ms wait
+    
+    printf("%02x\n", addr_i);
+    if(usb_control_msg(handle, USB_CTRL_IN, 
+		     CMD_I2C_IO + CMD_I2C_BEGIN + CMD_I2C_END,
+		     0, addr_i, NULL, 0, 
+		     1000) < 0) {
+           fprintf(stderr, "USB error: %s\n", usb_strerror());
+           goto quit;
+		}
+    if(i2c_tiny_usb_get_status() == STATUS_ADDRESS_ACK) {
+      printf("found at address 0x%02x\n", addr_i);
+    }
+  }
 
   /* -------- begin of ds1621 client processing --------- */
   printf("Probing for DS1621 ... ");

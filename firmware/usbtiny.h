@@ -10,7 +10,7 @@
 // The D+ and D- USB signals should be connected to two pins of the same
 // I/O port. The following macros define the port letter and the input
 // bit numbers:
-#if! defined (__AVR_ATtiny45__)
+#if! defined (__AVR_ATtiny85__)
 #define	USBTINY_PORT			C
 #define	USBTINY_DPLUS			1
 #define	USBTINY_DMINUS			0

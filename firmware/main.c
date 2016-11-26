@@ -54,7 +54,7 @@
 #include "usbtiny.h"
 typedef byte_t uchar;
 
-#if! defined (__AVR_ATtiny45__)
+#if! defined (__AVR_ATtiny85__)
 #define USBDDR DDRC
 #define USB_CFG_IOPORT PORTC
 #else
@@ -165,7 +165,7 @@ static unsigned short clock_delay2 = DEFAULT_DELAY/2;
 static unsigned short expected;
 static unsigned char saved_cmd;
 
-#if! defined (__AVR_ATtiny45__)
+#if! defined (__AVR_ATtiny85__)
 #define I2C_PORT   PORTC
 #define I2C_PIN    PINC
 #define I2C_DDR    DDRC

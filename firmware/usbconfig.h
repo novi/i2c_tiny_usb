@@ -19,7 +19,7 @@ must be adapted to your hardware.
 
 /* ---------------------------- Hardware Config ---------------------------- */
 
-#if! defined (__AVR_ATtiny45__)
+#if! defined (__AVR_ATtiny85__)
 #define	USB_CFG_IOPORTNAME		C
 /* This is the port where the USB bus is connected. When you configure it to
  * "PORTB", the registers PORTB, PINB (=PORTB+2) and DDRB (=PORTB+1) will be
